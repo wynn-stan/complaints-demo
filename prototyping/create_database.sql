@@ -1,0 +1,1 @@
+CREATE DATABASE spot_project;
