@@ -16,7 +16,77 @@
   \****************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h2\", null, \"Wohoo My second react application\"), document.querySelector('#root'));\n\n//# sourceURL=webpack://spot-final-year-project/./App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _ComplaintPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ComplaintPage */ \"./ComplaintPage.js\");\n\n\n //create a view for adding complaints\n// create a view for viewing complaints\n\n/**\r\n * Use case, clients go to url of complaint page\r\n * header with company name and brand\r\n * side nav with two options, view all complaints, submit a complaint.\r\n * in the content section, svg image and Submit A Complaint, We always hear you/ View Complaints, We Always Hear you\r\n *  Create a hear\r\n * */\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ComplaintPage__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.querySelector('#root'));\n\n//# sourceURL=webpack://spot-final-year-project/./App.js?");
+
+/***/ }),
+
+/***/ "./ComplaintPage.js":
+/*!**************************!*\
+  !*** ./ComplaintPage.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ \"./Header.js\");\n/* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Nav */ \"./Nav.js\");\n/* harmony import */ var _ViewComplaints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ViewComplaints */ \"./ViewComplaints.js\");\n/* harmony import */ var _SubmitView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SubmitView */ \"./SubmitView.js\");\n\n\n\n\n\n\nclass ComplaintPage extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {\n  constructor(props) {\n    super(props);\n    this.props = props;\n  }\n\n  render() {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Nav__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SubmitView__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ViewComplaints__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null));\n  }\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ComplaintPage);\n\n//# sourceURL=webpack://spot-final-year-project/./ComplaintPage.js?");
+
+/***/ }),
+
+/***/ "./ComplaintsTable.js":
+/*!****************************!*\
+  !*** ./ComplaintsTable.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nasync function getComplaintsData() {\n  const query = `\n        query {\n            complaint {\n                companyId\n                complaint\n                id\n                source\n                type\n            }\n        }\n    `;\n  const gqlApi = \"https://test-demo-gql-backend.herokuapp.com/v1/graphql\";\n  const data = await fetch(gqlApi, {\n    method: \"POST\",\n    headers: {\n      \"Content-type\": \"application/json\",\n      \"x-hasura-admin-secret\": \"SECRET\"\n    },\n    body: JSON.stringify({\n      query\n    })\n  }).then(res => {\n    return res.json();\n  }).then(data => {\n    return data.data.complaint;\n  });\n  console.log(data);\n  return data;\n}\n\nfunction ComplaintsTable(props) {\n  const data = getComplaintsData();\n  return;\n  /*(\r\n  <>\r\n   {\r\n       data.forEach(object => {\r\n           return <div className=\"complaint\">object.complaint</div>\r\n       })\r\n   }\r\n  </>\r\n  )*/\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ComplaintsTable);\n\n//# sourceURL=webpack://spot-final-year-project/./ComplaintsTable.js?");
+
+/***/ }),
+
+/***/ "./Header.js":
+/*!*******************!*\
+  !*** ./Header.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction Header(props) {\n  /**\r\n   * Header contains the company name and logo\r\n   */\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"header\", {\n    className: \"header-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"img\", {\n    className: \"logo\",\n    src: \"./public/svgs/logo.svg\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h3\", null, \"Alias\")));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);\n\n//# sourceURL=webpack://spot-final-year-project/./Header.js?");
+
+/***/ }),
+
+/***/ "./Nav.js":
+/*!****************!*\
+  !*** ./Nav.js ***!
+  \****************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction Nav(props) {\n  /**\r\n   * Side Nav contains two buttons,\r\n   *  View All Complaints \r\n   *  Submit A Complaint\r\n   */\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"nav\", {\n    className: \"nav-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", {\n    className: \"post-view-btn\"\n  }, \"Submit A Complaint\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", {\n    className: \"view-all-btn\"\n  }, \"View All Complaints\")));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Nav);\n\n//# sourceURL=webpack://spot-final-year-project/./Nav.js?");
+
+/***/ }),
+
+/***/ "./SubmitForm.js":
+/*!***********************!*\
+  !*** ./SubmitForm.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction SubmitForm(props) {\n  /**\r\n   * The Form contains\r\n   * Complaint\r\n   * \r\n   */\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"form\", {\n    className: \"form\",\n    action: \"#\",\n    method: \"post\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"textarea\", {\n    name: \"complaint\",\n    rows: \"10\",\n    cols: \"30\",\n    placeholder: \"Enter Complaint\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", {\n    className: \"submitButton\"\n  }, \"Submit\")));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SubmitForm);\n\n//# sourceURL=webpack://spot-final-year-project/./SubmitForm.js?");
+
+/***/ }),
+
+/***/ "./SubmitView.js":
+/*!***********************!*\
+  !*** ./SubmitView.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _SubmitForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubmitForm */ \"./SubmitForm.js\");\n\n\n\nfunction SubmitView(props) {\n  /**\r\n   * Submit View has an image, \r\n   * a header text - Submit A complaint\r\n   * a header description -  We always hear you\r\n   */\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"section\", {\n    className: \"submit-view-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    className: \"submit-view-header-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h3\", null, \"Submit A Complaint\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"p\", null, \"We Always Hear You\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SubmitForm__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null)));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SubmitView);\n\n//# sourceURL=webpack://spot-final-year-project/./SubmitView.js?");
+
+/***/ }),
+
+/***/ "./ViewComplaints.js":
+/*!***************************!*\
+  !*** ./ViewComplaints.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ComplaintsTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComplaintsTable */ \"./ComplaintsTable.js\");\n\n\n\nfunction ViewComplaints() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"section\", {\n    className: \"view-complaints-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    className: \"view-complaints-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h3\", null, \"View All Complaints\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"p\", null, \"We Always Hear You\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ComplaintsTable__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null)));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ViewComplaints);\n\n//# sourceURL=webpack://spot-final-year-project/./ViewComplaints.js?");
 
 /***/ }),
 

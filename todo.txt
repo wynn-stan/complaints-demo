@@ -1,0 +1,8 @@
+render the header
+/ set the img and header text to be on same line, display flex
+set the max-width of the svg to 50px
+
+set the root to have a container class
+
+// when you click on Submit A Complaint, you get the sub view
+// when you click the view all complaints, you get the view all view

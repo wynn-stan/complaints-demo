@@ -1,0 +1,51 @@
+main {
+    height: 100vh;
+}
+
+form.container {
+    max-width: 400px;
+    max-height: 300px;
+}
+
+#log_in_header {
+    
+    font-size: 26px;
+    margin-bottom: 20px;
+
+}
+
+a {
+    text-decoration: none;
+    font-style: italic;
+}
+
+.forgotPassword {
+    color: rgb(105, 104, 104);
+}
+
+input {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 7px 15px;
+    border-radius: 7px;
+}
+
+input:focus {
+    border: none;
+}
+
+button {
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #3ca7ff;
+    color: rgb(255, 255, 255);
+}
+
+body {
+    background-image: linear-gradient(to bottom right, rgb(255,255,255), #90caf9) ;
+}
+
+::placeholder {
+    font-weight: lighter;
+}
